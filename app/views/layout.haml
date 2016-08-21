@@ -1,12 +1,13 @@
 !!!
 %html{lang: "en"}
   %head
-    %link{href: "css/style.css", rel: "stylesheet"}
+    %link{href: "/css/style.css", rel: "stylesheet"}
+    %link{href: "/css/bootstrap.css", rel: "stylesheet"}
     %link{href: "http://fonts.googleapis.com/css?family=VT323", rel: "stylesheet", type: "text/css"}
     %title Robot World
   %body
-    %header
-      .header-links
+    %nav.navbar.navbar-default
+      .container-fluid
         %a{:href => "/"} Home
         %a{:href => "/robots"} Our Robots
         %a{:href => "/statistics"} Statistics

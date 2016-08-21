@@ -1,0 +1,33 @@
+
+
+h1 {
+  font-family: 'VT323', serif;
+  font-size: 5em;
+  color: #49412c;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'VT323', serif;
+  font-size: 2em;
+  color: #97743a;
+}
+
+nav a {
+  /*display: inline-block;*/
+  /*line-height: 80px;*/
+  padding: 0 25px;
+}
+
+nav.container-fluid {
+  margin: 0 auto;
+}
+
+form {
+  overflow: hidden;
+  display: block;
+}
+
+form p{
+  display: inline;
+}
