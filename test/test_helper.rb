@@ -1,9 +1,10 @@
-ENV['RACK_ENV'] ||= 'test'
+ENV['RACK_ENV'] = 'test'
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'tilt/erb'
+require 'tilt/haml'
+require 'capybara/dsl'
 
 module TestHelpers
   def teardown
@@ -15,4 +16,11 @@ module TestHelpers
     db = YAML::Store.new('db/robots_test')
     @robot_manager ||= RobotManager.new(db)
   end
+end
+
+Capybara.app = RobotWorldApp
+
+class FeatureTest < Minitest::Test
+  include Capybara::DSL
+  include TestHelpers
 end
