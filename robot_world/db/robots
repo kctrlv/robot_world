@@ -1,24 +1,17 @@
 ---
 robots:
 - id: 1
-  name: n
-  city: n
-  state: n
-  birthdate: n
-  department: n
-  date_hired: n
-- id: 2
-  name: Bob
-  city: Bob
-  state: Bob
-  birthdate: Bob
-  department: Bob
-  date_hired: Bob
+  name: Adam
+  city: Staten Island
+  state: NY
+  birthdate: 01/01/1986
+  department: Accounting
+  date_hired: 01/01/2016
 - id: 3
   name: Chris
-  city: Chris
-  state: Chris
-  birthdate: Chris
-  department: Chris
-  date_hired: Chris
+  city: Chris2
+  state: Chris3
+  birthdate: Chris4
+  department: Chris5
+  date_hired: Chris6
 total: 3

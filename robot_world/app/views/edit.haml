@@ -1,0 +1,22 @@
+%form{action: "/robots/#{@robot.id}", method: "post"}
+  %p Edit
+  %input{name: "_method", type: "hidden", value: "PUT"}
+  %input{name: "robot[name]", type: "text", value: @robot.name}
+  %br
+
+  %input{name: "robot[city]", type: "text", value: @robot.city}
+  %br
+
+  %input{name: "robot[state]", type: "text", value: @robot.state}
+  %br
+
+  %input{name: "robot[birthdate]", type: "text", value: @robot.birthdate}
+  %br
+
+  %input{name: "robot[department]", type: "text", value: @robot.department}
+  %br
+
+  %input{name: "robot[date_hired]", type: "text", value: @robot.date_hired}
+  %br
+
+  %input{type: "submit", value:"Update"}

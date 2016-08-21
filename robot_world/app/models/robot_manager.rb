@@ -42,4 +42,22 @@ class RobotManager
   def find(id)
     Robot.new(raw_robot(id))
   end
+
+  def update(id, robot)
+    db.transaction do
+      target = db['robots'].find { |data| data['id'] == id }
+      target['name'] = robot[:name]
+      target['city'] = robot[:city]
+      target['state'] = robot[:state]
+      target['birthdate'] = robot[:birthdate]
+      target['department'] = robot[:department]
+      target['date_hired'] = robot[:date_hired]
+    end
+  end
+
+  def destroy(id)
+    db.transaction do
+      db['robots'].delete_if { |robot| robot["id"] == id }
+    end
+  end
 end
