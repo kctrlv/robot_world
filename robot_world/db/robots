@@ -1,17 +1,3 @@
 ---
-robots:
-- id: 1
-  name: Adam
-  city: Staten Island
-  state: NY
-  birthdate: 01/01/1986
-  department: Accounting
-  date_hired: 01/01/2016
-- id: 3
-  name: Chris
-  city: Chris2
-  state: Chris3
-  birthdate: Chris4
-  department: Chris5
-  date_hired: Chris6
+robots: []
 total: 3
