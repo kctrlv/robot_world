@@ -1,5 +1,4 @@
 require 'yaml/store'
-require_relative 'robot'
 
 class RobotManager
   attr_reader :db
@@ -57,7 +56,15 @@ class RobotManager
 
   def destroy(id)
     db.transaction do
+      # db['total'] -= 1 if db['robots'].find { |data| data['id'] == id }
       db['robots'].delete_if { |robot| robot["id"] == id }
+    end
+  end
+
+  def delete_all
+    db.transaction do
+      db['robots'] = []
+      db['total'] = 0
     end
   end
 end

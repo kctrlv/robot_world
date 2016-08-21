@@ -1,3 +1,17 @@
 ---
-robots: []
-total: 3
+robots:
+- id: 5
+  name: '2'
+  city: '2'
+  state: '2'
+  birthdate: '2'
+  department: '2'
+  date_hired: '2'
+- id: 5
+  name: '3'
+  city: '3'
+  state: '3'
+  birthdate: '3'
+  department: '3'
+  date_hired: '3'
+total: 5
