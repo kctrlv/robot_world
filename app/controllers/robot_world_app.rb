@@ -44,6 +44,14 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
+  get '/about' do
+    haml :about
+  end
+
+  get '/statistics' do
+    haml :stats
+  end
+
   def robot_manager
     if ENV['RACK_ENV'] == 'test'
       db = YAML::Store.new('db/robots_test')
