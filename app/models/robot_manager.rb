@@ -1,4 +1,4 @@
-require 'yaml/store'
+require 'sqlite3'
 
 class RobotManager
   attr_reader :db
@@ -8,26 +8,20 @@ class RobotManager
   end
 
   def create(robot)
-    db.transaction do
-      db['robots'] ||= []
-      db['total']  ||= 0
-      db['total']   += 1
-      robot_data = {
-        'id' => db['total'],
-        'name' => robot['name'],
-        'city' => robot['city'],
-        'state' => robot['state'],
-        'birthdate' => robot['birthdate'],
-        'department' => robot['department'],
-        'date_hired' => robot['date_hired'] }
-      db['robots'] << robot_data
-    end
+    db.execute(
+      "INSERT INTO robots
+      (name, city, state, birthdate, department, date_hired)
+      VALUES (?, ?, ?, ?, ?, ?);",
+      robot['name'],
+      robot['city'],
+      robot['state'],
+      robot['birthdate'],
+      robot['department'],
+      robot['date_hired'] )
   end
 
   def raw_robots
-    db.transaction do
-      db['robots'] || []
-    end
+    db.execute("SELECT * FROM robots;")
   end
 
   def all
@@ -43,28 +37,28 @@ class RobotManager
   end
 
   def update(id, robot)
-    db.transaction do
-      target = db['robots'].find { |data| data['id'] == id }
-      target['name'] = robot[:name]
-      target['city'] = robot[:city]
-      target['state'] = robot[:state]
-      target['birthdate'] = robot[:birthdate]
-      target['department'] = robot[:department]
-      target['date_hired'] = robot[:date_hired]
-    end
+    db.execute(
+      "UPDATE robots SET
+      name= ?,
+      city= ?,
+      state= ?,
+      birthdate= ?,
+      department= ?,
+      date_hired= ?
+      ;",
+      robot[:name],
+      robot[:city],
+      robot[:state],
+      robot[:birthdate],
+      robot[:department],
+      robot[:date_hired] )
   end
 
   def destroy(id)
-    db.transaction do
-      # db['total'] -= 1 if db['robots'].find { |data| data['id'] == id }
-      db['robots'].delete_if { |robot| robot["id"] == id }
-    end
+    db.execute("DELETE FROM robots WHERE id = ?;", id)
   end
 
   def delete_all
-    db.transaction do
-      db['robots'] = []
-      db['total'] = 0
-    end
+    db.execute("DELETE FROM robots;")
   end
 end

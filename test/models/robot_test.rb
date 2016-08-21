@@ -3,7 +3,6 @@ require_relative '../test_helper'
 class RobotTest < Minitest::Test
   def test_assigns_attributes_correctly
     robot = Robot.new({
-                        "id"   => 1,
                         "name" => "Bob",
                         "city" => "Bobland",
                         "state" => "CA",
@@ -11,7 +10,6 @@ class RobotTest < Minitest::Test
                         "department" => "Babysitting",
                         "date_hired" => "01/01/2016"
                       })
-    assert_equal 1, robot.id
     assert_equal "Bob", robot.name
     assert_equal "Bobland", robot.city
     assert_equal "CA", robot.state

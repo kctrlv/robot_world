@@ -13,8 +13,9 @@ module TestHelpers
   end
 
   def robot_manager
-    db = YAML::Store.new('db/robots_test')
-    @robot_manager ||= RobotManager.new(db)
+    db = SQLite3::Database.new('db/robots_test.db')
+    db.results_as_hash = true
+    RobotManager.new(db)
   end
 end
 

@@ -20,7 +20,6 @@ class RobotManagerTest < Minitest::Test
   def test_it_creates_a_robot
     create_robot("Bob", "Bobland", "CA", "01/01/1986", "Babysitting", "01/01/2016")
     robot = robot_manager.find(current_robot_id)
-    assert_equal 1, robot.id
     assert_equal "Bob", robot.name
     assert_equal "Bobland", robot.city
     assert_equal "CA", robot.state
@@ -42,7 +41,7 @@ class RobotManagerTest < Minitest::Test
     create_robot("Adam", "Adamland", "AL", "01/01/1986", "Accounting", "01/01/2016")
     # sleep(1)
     assert_equal "Accounting", robot_manager.all.first.department
-    assert_equal 1, robot_manager.all.first.id
+    assert_equal current_robot_id, robot_manager.all.first.id
     update_data = {
       name: "Adam",
       city: "Adamland",
@@ -50,19 +49,19 @@ class RobotManagerTest < Minitest::Test
       birthdate: "01/01/1986",
       department: "Agriculture",
       date_hired: "01/01/2016" }
-    robot_manager.update(1, update_data)
+    robot_manager.update(current_robot_id, update_data)
     # sleep(1)
-    assert_equal 1, robot_manager.all.first.id
+    assert_equal current_robot_id, robot_manager.all.first.id
     assert_equal "Agriculture", robot_manager.all.first.department
     assert_equal "CA", robot_manager.all.first.state
   end
 
-  def test_it_destoys_a_robot
+  def test_it_destroys_a_robot
     create_robot("Adam", "Adamland", "AL", "01/01/1986", "Accounting", "01/01/2016")
     create_robot("Bob", "Bobland", "CA", "01/01/1986", "Babysitting", "01/01/2016")
     assert_equal 2, robot_manager.all.length
     assert_equal "Bob", robot_manager.all.last.name
-    robot_manager.destroy(2)
+    robot_manager.destroy(current_robot_id)
     assert_equal 1, robot_manager.all.length
     assert_equal "Adam", robot_manager.all.last.name
   end
