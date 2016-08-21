@@ -45,13 +45,15 @@ class RobotManager
       birthdate= ?,
       department= ?,
       date_hired= ?
+      WHERE id = ?
       ;",
       robot[:name],
       robot[:city],
       robot[:state],
       robot[:birthdate],
       robot[:department],
-      robot[:date_hired] )
+      robot[:date_hired],
+      id )
   end
 
   def destroy(id)
