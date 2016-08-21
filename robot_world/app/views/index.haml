@@ -1,0 +1,6 @@
+%h1 Our Robots
+- @robots.each do |robot|
+  %h3
+    =robot.id
+    \:
+    %a{href: "/robots/#{robot.id}"}= robot.name

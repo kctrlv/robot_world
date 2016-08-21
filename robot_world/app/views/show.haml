@@ -1,0 +1,18 @@
+%a{href: "/"} Robot World
+%a{href: "/robots"} Our Robots
+
+%h1= @robot.name
+
+%img{src: "https://robohash.org/#{@robot.avatar}.png"}
+
+%p
+  This is a robot named #{@robot.name}. It was manufactured in the great city of #{@robot.city}, #{@robot.state} on #{@robot.birthdate}. It was put into operation in the #{@robot.department} department as soon as possible, which was reportedly on #{@robot.date_hired}.
+
+%a{href: "/robots/#{@robot.id}/edit"} Edit
+
+-2.times do
+  %br
+
+%form{action: "/robots/#{@robot.id}", method: "POST"}
+  %input{name: "_method", type: "hidden", value: "DELETE"}
+  %input{type: "submit", value: "delete"}
